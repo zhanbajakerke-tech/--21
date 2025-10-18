@@ -1,4 +1,4 @@
-print("=== Студенттердің емтихан бағасының рейтингін шығару жүйесі ===")
+print("Студенттердің емтихан бағасының рейтингін шығару жүйесі")
 
 
 fakultet_atauy = "Ақпараттық технологиялар факультеті"
@@ -28,7 +28,7 @@ for top, tizim in studentter.items():
         baga_zhiyntygy[at] = {"топ": top, "пән": pan_atauy, "бал": bal}
 
 
-print("\n=== Әр топтың орташа балы ===")
+print("\nӘр топтың рейтингі")
 for top in top_tizimi:
     toplam = 0
     san = 0
@@ -38,11 +38,11 @@ for top in top_tizimi:
             san += 1
     if san > 0:
         ort_baga = toplam / san
-        print(f"{top} тобының орташа балы: {round(ort_baga, 2)}")
+        print(f"{top} тобының рейтингі: {round(ort_baga, 2)}")
 
 
 while True:
-    print("\n=== Сайт картасы ===")
+    print("\nСайт картасы")
     print("1. Барлық бағаларды көру")
     print("2. Студентті іздеу")
     print("3. Жүйеден шығу")
@@ -66,6 +66,7 @@ while True:
         break
     else:
         print("Қате таңдау, қайта көріңіз.")
+
 
 
 
