@@ -15,7 +15,7 @@ studentter = {
 
 baga_zhiyntygy = {}
 
-# ==== 2-р емтихан ====
+#2-рубежный емтихан 
 def ekinshi_emtihan_engizu():
     if not baga_zhiyntygy:
         print("Алдымен 1-р емтихан енгізіңіз!")
@@ -31,7 +31,7 @@ def ekinshi_emtihan_engizu():
     print("Барлық 2-р емтихан нәтижелері енгізілді.")
 
 
-# ==== Файлмен жұмыс ====
+#Файлмен жұмыс
 def faylga_jazu():
     with open("emtiхан_bagalary.txt", "w", encoding="utf-8") as file:
         for at, info in baga_zhiyntygy.items():
@@ -58,7 +58,7 @@ def fayldan_oku():
         print("Файл табылмады, жаңа база жасалады.")
 
 
-# ==== Студент іздеу ====
+
 def student_izdeu():
     at = input("Іздейтін студенттің атын енгізіңіз: ").strip().title()
     tabyldy = False
@@ -77,7 +77,7 @@ def student_izdeu():
         print("Мұндай студент табылмады.")
 
 
-# ==== БАҒДАРЛАМА БАСТАУ ====
+
 fayldan_oku()
 
 while True:
@@ -114,6 +114,7 @@ while True:
         break
     else:
         print("Қате таңдау! Қайта енгізіңіз.")
+
 
 
 
