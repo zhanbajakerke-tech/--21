@@ -41,6 +41,6 @@ def reyting_dopuska(baga_zhiyntygy):
         else:
             ort = (rub1 + rub2) / 2
             if ort >= 50:
-                print(f"{at} ({info['топ']}) орташа балл {ort:.1f} ✅ Допуск бар")
+                print(f"{at} ({info['топ']}) орташа балл {ort:.1f}  Допуск бар")
             else:
-                print(f"{at} ({info['топ']}) орташа балл {ort:.1f} ❌ Допуск жоқ")
+                print(f"{at} ({info['топ']}) орташа балл {ort:.1f}  Допуск жоқ")
