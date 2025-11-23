@@ -1,3 +1,5 @@
+# 1-р емтихан енгізу және рейтинг есептеу модулі
+
 def birinshi_emtihan_engizu(studentter, baga_zhiyntygy):
     pan = input("Пән атауын енгізіңіз: ").strip().title()
     print(f"\n{pan} пәні бойынша 1-р емтихан нәтижесін енгізіңіз:")
@@ -8,7 +10,7 @@ def birinshi_emtihan_engizu(studentter, baga_zhiyntygy):
             try:
                 bal = float(input(f"{at}: "))
             except ValueError:
-                print("Қате! Тек сан енгізіңіз.")
+                print("Қате! Сан енгізіңіз.")
                 bal = 0
             baga_zhiyntygy[at] = {"топ": top, "пән": pan, "1-емтихан": bal, "2-емтихан": None}
     return baga_zhiyntygy
@@ -41,6 +43,6 @@ def reyting_dopuska(baga_zhiyntygy):
         else:
             ort = (rub1 + rub2) / 2
             if ort >= 50:
-                print(f"{at} ({info['топ']}) орташа балл {ort:.1f}  Допуск бар")
+                print(f"{at} ({info['топ']}) орташа балл {ort:.1f} Допуск бар")
             else:
-                print(f"{at} ({info['топ']}) орташа балл {ort:.1f}  Допуск жоқ")
+                print(f"{at} ({info['топ']}) орташа балл {ort:.1f} Допуск жоқ")
