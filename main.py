@@ -1,4 +1,6 @@
 from utils import birinshi_emtihan_engizu, reyting_shygaru, reyting_dopuska
+import numpy as np
+import matplotlib.pyplot as plt
 
 print("Студенттердің емтихан нәтижесін басқару жүйесі")
 
@@ -14,8 +16,6 @@ studentter = {
 }
 
 baga_zhiyntygy = {}
-
-#2-рубежный емтихан 
 def ekinshi_emtihan_engizu():
     if not baga_zhiyntygy:
         print("Алдымен 1-р емтихан енгізіңіз!")
@@ -30,8 +30,6 @@ def ekinshi_emtihan_engizu():
         baga_zhiyntygy[at]["2-емтихан"] = bal
     print("Барлық 2-р емтихан нәтижелері енгізілді.")
 
-
-#Файлмен жұмыс
 def faylga_jazu():
     with open("emtiхан_bagalary.txt", "w", encoding="utf-8") as file:
         for at, info in baga_zhiyntygy.items():
@@ -58,7 +56,6 @@ def fayldan_oku():
         print("Файл табылмады, жаңа база жасалады.")
 
 
-
 def student_izdeu():
     at = input("Іздейтін студенттің атын енгізіңіз: ").strip().title()
     tabyldy = False
@@ -77,8 +74,74 @@ def student_izdeu():
         print("Мұндай студент табылмады.")
 
 
+class StudentInfo:
+    def init(self, name, top, rub1, rub2=None):
+        self.name = name
+        self.top = top
+        self.rub1 = rub1
+        self.rub2 = rub2
+
+    def orta(self):
+        if self.rub2 is None:
+            return self.rub1
+        return (self.rub1 + self.rub2) / 2
+
+    def info(self):
+        return f"{self.name} ({self.top}) – 1-р: {self.rub1}, 2-р: {self.rub2}, орташа: {self.orta():.1f}"
+
+
+class TopStudent(StudentInfo):
+    def init(self, name, top, rub1, rub2=None, bonus=5):
+        super().init(name, top, rub1, rub2)
+        self.bonus = bonus
+
+    def orta(self):
+        return super().orta() + self.bonus
+
+
+def oop_studentter_tizimi():
+    print("\n OOP үлгісі: StudentInfo және TopStudent")
+    for at, info in baga_zhiyntygy.items():
+        if "А" in at:
+            st = TopStudent(at, info["топ"], info["1-емтихан"], info["2-емтихан"])
+        else:
+            st = StudentInfo(at, info["топ"], info["1-емтихан"], info["2-емтихан"])
+        print(st.info())
+
+
+def grafik_orta_bagalar():
+    if not baga_zhiyntygy:
+        print("Алдымен емтихан мәліметтерін енгізіңіз!")
+        return
+
+    atar = []
+    ortalar = []
+
+    for at, info in baga_zhiyntygy.items():
+        rub1 = info["1-емтихан"]
+        rub2 = info["2-емтихан"] if info["2-емтихан"] else 0
+        ort = np.mean([rub1, rub2])
+        atar.append(at)
+        ortalar.append(ort)
+
+    ortalar_np = np.array(ortalar)
+    print("\nСтуденттердің орташа балдары (NumPy):")
+    print(ortalar_np)
+
+    plt.figure(figsize=(10, 5))
+    plt.plot(atar, ortalar_np, marker="o")
+    plt.xticks(rotation=45)
+    plt.title("Студенттердің орташа балдар динамикасы")
+    plt.ylabel("Балл")
+    plt.grid()
+    plt.tight_layout()
+    plt.show()
+
+
 
 fayldan_oku()
+
+
 
 while True:
     print("\n📘 Мәзір:")
@@ -90,8 +153,10 @@ while True:
     print("6. Мәліметтерді файлға сақтау")
     print("7. Файлдағы барлық мәліметтерді көру")
     print("8. Шығу")
+    print("9. OOP – класс арқылы студенттерді шығару")
+    print("10. NumPy және Matplotlib – бағалар графигі")
 
-    n = input("Нұсқаны таңдаңыз (1-8): ")
+    n = input("Нұсқаны таңдаңыз (1-10): ")
 
     if n == "1":
         baga_zhiyntygy = birinshi_emtihan_engizu(studentter, baga_zhiyntygy)
@@ -112,12 +177,12 @@ while True:
     elif n == "8":
         print("Бағдарлама аяқталды. Сәттілік!")
         break
+    elif n == "9":
+        oop_studentter_tizimi()
+    elif n == "10":
+        grafik_orta_bagalar()
     else:
         print("Қате таңдау! Қайта енгізіңіз.")
-
-
-
-
 
 
 
