@@ -1,0 +1,14 @@
+{
+  "students": [
+    "Akerke",
+    "Arman"
+  ],
+  "exam1": {
+    "Akerke": "100",
+    "Arman": "100"
+  },
+  "exam2": {
+    "Akerke": "99",
+    "Arman": "90"
+  }
+}

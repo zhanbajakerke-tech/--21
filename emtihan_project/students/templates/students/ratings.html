@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>Рейтинг</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1d976c, #93f9b9);
+            margin: 0;
+            padding: 40px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0f5132;
+            margin-bottom: 25px;
+            font-size: 36px;
+        }
+
+        table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+        }
+
+        th {
+            background: #1d976c;
+            color: white;
+            padding: 14px;
+            font-size: 18px;
+        }
+
+        td {
+            padding: 12px;
+            text-align: center;
+            font-size: 17px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f1fff6;
+        }
+
+        .green {
+            color: #0a7a2f;
+            font-weight: bold;
+        }
+
+        .red {
+            color: #9b0f0f;
+            font-weight: bold;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            font-size: 20px;
+            text-decoration: none;
+            color: #0f5132;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #08331f;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<h1>Рейтинг</h1>
+
+<table>
+    <tr>
+        <th>Студент</th>
+        <th>1-емтихан</th>
+        <th>2-емтихан</th>
+        <th>Жалпы балл</th>
+        <th>Допуск</th>
+    </tr>
+
+    {% for s in ratings %}
+    <tr>
+        <td>{{ s.name }}</td>
+        <td>{{ s.exam1 }}</td>
+        <td>{{ s.exam2 }}</td>
+        <td>{{ s.total }}</td>
+        <td>
+            {% if s.dopusk == "бар" %}
+                <span class="green">бар</span>
+            {% else %}
+                <span class="red">жоқ</span>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="{% url 'process' %}">← Артқа</a>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>Емтихан жүйесі</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+
+        .container {
+            background: white;
+            color: #333;
+            width: 450px;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            text-align: center;
+            animation: fadein 0.7s ease;
+        }
+
+        @keyframes fadein {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #444;
+            font-size: 26px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        ul li {
+            margin: 12px 0;
+        }
+
+        ul li a {
+            display: block;
+            text-decoration: none;
+            padding: 14px;
+            background: #667eea;
+            color: white;
+            border-radius: 10px;
+            font-size: 18px;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        ul li a:hover {
+            background: #5563d6;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Емтихан басқару жүйесі</h1>
+
+    <ul>
+        <li><a href="{% url 'exam1' %}">1-р емтихан енгізу</a></li>
+        <li><a href="{% url 'exam2' %}">2-р емтихан енгізу</a></li>
+        <li><a href="{% url 'ratings' %}">Рейтинг шығару</a></li>
+        <li><a href="{% url 'students' %}">Студенттер тізімі</a></li>
+    </ul>
+</div>
+
+</body>
+</html>

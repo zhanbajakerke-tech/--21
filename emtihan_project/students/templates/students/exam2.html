@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>2-р емтихан</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .card {
+            background: white;
+            color: #333;
+            padding: 30px;
+            width: 450px;
+            border-radius: 18px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.3);
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #185a9d;
+            font-size: 26px;
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 2px solid #185a9d;
+            font-size: 16px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #43cea2;
+        }
+
+        button {
+            width: 95%;
+            padding: 12px;
+            margin-top: 15px;
+            background: #185a9d;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background: #124474;
+            transform: scale(1.05);
+        }
+
+        a {
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            color: #185a9d;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            color: #0f3550;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h2>2-р емтихан</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Студент аты" required>
+        <input type="number" name="score" placeholder="Баға" required min="0" max="100">
+        <button type="submit">Сақтау</button>
+    </form>
+
+    <a href="{% url 'process' %}">← Артқа</a>
+
+</div>
+
+</body>
+</html>
